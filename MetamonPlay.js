@@ -232,7 +232,7 @@ class MetamonPlayer {
             var fight_result = data["challengeResult"]
             var bp_fragment_num = parseInt(data["bpFragmentNum"])
 
-            logMsg += `Fighting... ${(i + 1)}/${loop_count} ${fight_result ? "Victorie" : "Defeat"}\n`
+            logMsg += `Fighting... ${(i + 1)}/${loop_count} ${fight_result ? "Victory" : "Defeat"}\n`
             await updateWidget();
             table.reload()
 
@@ -463,7 +463,7 @@ async function updateWidget() {
 
     if (logMsg != '') {
         let row3 = new UITableRow()
-        row3.height = logMsg.split(/\r\n|\r|\n/).length * 30
+        row3.height = logMsg.split(/\r\n|\r|\n/).length * 27
         let cell = row3.addText(logMsg);
         table.addRow(row3)
     }
