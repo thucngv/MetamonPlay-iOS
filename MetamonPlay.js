@@ -129,16 +129,16 @@ function write_stats(filename, data, from_local) {
     var content = read_file(filename, from_local);
     if (content.trim() == "") {
         for (const key of Object.keys(data)) {
-            content = "," + content + key;
+            content = content + key + ",";
         }
-        if (content.length > 0) content = content.substring(1) + "\n";
+        if (content.length > 0) content = content.substring(0, content.length - 1) + "\n";
     }
     var s = "";
     for (const key of Object.keys(data)) {
-        s = "," + s + data[key];
+        s = s + data[key] + ",";
     }
     if (s.length > 0) {
-        s = s.substring(1) + "\n";
+        s = s.substring(0, s.length - 1) + "\n";
         content = content + s;
     }
     write_file(filename, content, from_local);
