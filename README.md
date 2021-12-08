@@ -87,3 +87,7 @@ obtaining one every day for battles)
 
 Hope you will have fun playing and this script will make it 
 a little bit less tedious. Enjoy!
+
+<b>₿₿₿ Sponsor me some Raca if you feel happy:</b>
+
+    0x5c78c7F9D078c82EEc2b083aa622aaFDb82AEad3
