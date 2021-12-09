@@ -455,8 +455,8 @@ async function updateWidget() {
     }
     else if (endGame == 0 && readyFight && isFighting) {
         let row2 = new UITableRow()
-        row2.height = 100
-        let cell = row2.addImageAtURL("https://i.gifer.com/ZWdx.gif")
+        row2.height = 35
+        let cell = row2.addImageAtURL("https://raw.githubusercontent.com/thucngv/MetamonPlay-iOS/main/screenshots/ajaxbar.gif")
         cell.centerAligned()
         table.addRow(row2)
     }
