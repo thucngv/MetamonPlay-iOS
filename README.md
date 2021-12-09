@@ -73,7 +73,7 @@ Send files to iOS device, then put them in to iCloud drive
 Open Scriptable app, you can see MetamonPlay script, tap on it and fighting
 <img src="screenshots/photo_2.jpg" />
 
-Will try to read file wallets.tsv in iCloud drive,
+Will try to read file wallets.csv in iCloud drive,
 auto fight, mint eggs, and save stats to corresponding 
 files. Now you ready to have fun and explore other options.
 
