@@ -58,6 +58,10 @@ File should have 4 columns comma separated (csv):
 
     name,address,sign,msg
     Wallet1,0x123..,0x23...,LogIn-...
+    
+You can download [sample wallets file] and replace with your data.
+
+[sample wallets file]: https://github.com/thucngv/MetamonPlay-iOS/raw/main/wallets.csv
 
 Name is custom, choose what you want. If you save 
 stats to file it will be used for name of that file.
