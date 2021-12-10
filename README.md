@@ -43,30 +43,13 @@ in with MetaMask</b> !
 
 <img src="screenshots/enter_game_sign.png" />
 
-After login entry with "login" name should appear 
-in the list of requests of developers tools.
-<img src="screenshots/enter_game_login.png" />
-There
-after clicking on it and selecting "payload" in new 
-menu all 3 essential values wil appear (address, sign, 
-msg) copy those values and save in file (for example
-default is "wallets.tsv" in same dir where you run it).
+After login success in to the game, switch to <b>Console</b> tab of developers tools, paste the bellow script then press Enter.
 
-<img src="screenshots/enter_game_credentials.png" />
-
-File should have 4 columns comma separated (csv):
-
-    name,address,sign,msg
-    Wallet1,0x123..,0x23...,LogIn-...
+    (()=>{var e=[["name","address","sign","msg"],["Wallet1",sessionStorage.getItem("account-address"),sessionStorage.getItem("connect-sign"),sessionStorage.getItem("connect-signMsg")]],t="";e.forEach(function(n,a){dataString=n.join(","),t+=a<e.length?dataString+"\n":dataString});!function(e,t,n){var a=document.createElement("a");n=n||"application/octet-stream",navigator.msSaveBlob?navigator.msSaveBlob(new Blob([e],{type:n}),t):URL&&"download"in a?(a.href=URL.createObjectURL(new Blob([e],{type:n})),a.setAttribute("download",t),document.body.appendChild(a),a.click(),document.body.removeChild(a)):location.href="data:application/octet-stream,"+encodeURIComponent(e)}(t,"wallets.csv","text/csv;encoding:utf-8")})();
     
-You can download [sample wallets file] and replace with your data.
+A wallets.csv file will auto downloaded
 
-[sample wallets file]: https://github.com/thucngv/MetamonPlay-iOS/raw/main/wallets.csv
-
-Name is custom, choose what you want. If you save 
-stats to file it will be used for name of that file.
-If you have multiple wallets you can add several rows
-to this csv file.
+<img src="screenshots/photo_3.png" />
 
 Send files to iOS device, then put them in to iCloud drive
 <img src="screenshots/photo_1.jpg" />
