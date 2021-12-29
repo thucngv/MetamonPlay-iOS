@@ -1,10 +1,11 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
-// icon-color: light-gray; icon-glyph: magic;
+// icon-color: yellow; icon-glyph: registered;
 
 /*
 2021-12-09
-Created by: thucngv
+Created by: t.me/thucngv
+GitHub: https://github.com/thucngv/MetamonPlay-iOS
 */
 
 // URLs to make api calls
@@ -41,7 +42,7 @@ async function post_formdata(payload, url, headers) {
             const val = payload[key];
             req.addParameterToMultipart(key, val + "");
         }
-    await sleep(500)
+    await sleep(300)
     for (var i = 0; i < 5; i++)
         try {
             return await req.loadJSON();
@@ -104,7 +105,7 @@ function read_wallets(filename, from_local) {
     var str = read_file(filename, from_local);
     var list = [];
     var fields = [];
-    const regex = /([a-zA-Z0-9\-]+),([a-zA-Z0-9\-]+),([a-zA-Z0-9\-]+),([a-zA-Z0-9\-]+)/gm;
+    const regex = filename.includes('.csv') ? /([a-zA-Z0-9\-]+),([a-zA-Z0-9\-]+),([a-zA-Z0-9\-]+),([a-zA-Z0-9\-]+)/gm : /([a-zA-Z0-9\-]+)\t([a-zA-Z0-9\-]+)\t([a-zA-Z0-9\-]+)\t([a-zA-Z0-9\-]+)/gm;
     let m;
     while ((m = regex.exec(str)) !== null) {
         if (m.index === regex.lastIndex) regex.lastIndex++;
@@ -208,7 +209,7 @@ class MetamonPlayer {
         var battle_level = pick_battle_level(my_level);
 
         logMsg += "Fighting...\n"
-        logMsg += "--------\n"
+        logMsg += "##########\n"
         await updateWidget();
         table.reload()
         for (var i = 0; i < loop_count; i++) {
@@ -225,7 +226,7 @@ class MetamonPlayer {
             var code = response["code"]
             if (code == "BATTLE_NOPAY") {
                 this.no_enough_money = true;
-                logMsg += "--------\n"
+                logMsg += "##########\n"
                 break;
             }
             var data = response["data"]
@@ -280,7 +281,7 @@ class MetamonPlayer {
         for (const key of Object.keys(stats)) {
             logMsg += (key + ": " + stats[key] + "\n")
         }
-        logMsg += "--------\n"
+        logMsg += "##########\n"
         await updateWidget();
         table.reload()
     }
@@ -374,11 +375,11 @@ class MetamonPlayer {
         if (this.output_stats)
             write_stats(this.summary_file_name, stats, false);
 
-        logMsg += "--------\n"
+        logMsg += "##########\n"
         for (const key of Object.keys(stats)) {
             logMsg += (key + ": " + stats[key] + "\n")
         }
-        logMsg += "--------\n"
+        logMsg += "##########\n"
         await updateWidget();
         table.reload()
     }
@@ -421,7 +422,7 @@ async function updateWidget() {
     }
     let row0 = new UITableRow()
     row0.height = 150
-    let cell0 = row0.addImageAtURL("https://metamon.radiocaca.com/img_logo.png")
+    let cell0 = row0.addImageAtURL("https://raw.githubusercontent.com/thucngv/MetamonPlay-iOS/main/screenshots/metamon_island_logo.png")
     cell0.centerAligned()
     table.addRow(row0)
     table.addRow(row)
@@ -475,6 +476,8 @@ table.present(true)
 
 async function fight(r) {
     var wallets = read_wallets("wallets.csv", false);
+    if (wallets.length == 0) wallets = read_wallets("wallets.tsv", false);
+
     if (wallets.length == 0) {
         var alert = new Alert();
         alert.message = "wallets.csv file can't be found.";
