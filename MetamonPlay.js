@@ -167,7 +167,7 @@ class MetamonPlayer {
         //Obtain token for game session to perform battles and other actions
         var payload = { "address": this.address, "sign": this.sign, "msg": this.msg, "network": 1 }
         var response = await post_formdata(payload, TOKEN_URL)
-        this.token = response["data"]
+        this.token = response["data"]["accessToken"]
     }
 
     async change_fighter(monster_id) {
@@ -291,7 +291,7 @@ class MetamonPlayer {
 
         var payload = { "address": this.address, "page": 1, "pageSize": 99999 }
         var headers = {
-            "accessToken": this.token
+            "accesstoken": this.token
         }
         var response = await post_formdata(payload, WALLET_PROPERTY_LIST, headers)
         if (response["code"] == "SUCCESS")
