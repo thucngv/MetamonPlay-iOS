@@ -326,7 +326,7 @@ class MetamonPlayer {
 
         var available_monsters = []
         wallet_monsters.forEach(function (monster) {
-            if (parseInt(monster["tear"]) > 0) available_monsters.push(monster);
+            if (parseInt(monster["tear"]) > 0 && parseInt(monster["exp"]) < 600 && parseInt(monster["level"]) < 60) available_monsters.push(monster);
         });
 
         var stats_l = []
