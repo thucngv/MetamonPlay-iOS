@@ -165,7 +165,7 @@ class MetamonPlayer {
 
     async init_token() {
         //Obtain token for game session to perform battles and other actions
-        var payload = { "address": this.address, "sign": this.sign, "msg": this.msg, "network": 1 }
+        var payload = { "address": this.address, "sign": this.sign, "msg": this.msg, "network": 1, "clientType": "MetaMask" }
         var response = await post_formdata(payload, TOKEN_URL)
         this.token = response["data"]["accessToken"]
     }
